@@ -1,0 +1,187 @@
+{
+	"info": {
+		"_postman_id": "7de2cafe-eeb0-b1e7-3287-6da47d1eebe9",
+		"name": "XACML Rest Profile",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "XACML Rest Discovery",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46YWRtaW4="
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://localhost:9443/api/identity/entitlement/decision/home",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "9443",
+					"path": [
+						"api",
+						"identity",
+						"entitlement",
+						"decision",
+						"home"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "XACML Rest Discovery XML",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46YWRtaW4="
+					},
+					{
+						"key": "Accept",
+						"value": "application/xml"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://localhost:9443/api/identity/entitlement/decision/home",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "9443",
+					"path": [
+						"api",
+						"identity",
+						"entitlement",
+						"decision",
+						"home"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "XACML JSON PDP",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46YWRtaW4="
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Request\": {\n        \"Action\": {\n            \"Attribute\": [\n                {\n                    \"AttributeId\": \"urn:oasis:names:tc:xacml:1.0:action:action-id\", \n                    \"Value\": \"read\"\n                }\n            ]\n        }, \n        \"Resource\": {\n            \"Attribute\": [\n                {\n                    \"AttributeId\": \"urn:oasis:names:tc:xacml:1.0:resource:resource-id\", \n                    \"Value\": \"http://127.0.0.1/service/very_secure/\"\n                }\n            ]\n        }\n    }\n}"
+				},
+				"url": {
+					"raw": "https://localhost:9443/api/identity/entitlement/decision/pdp",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "9443",
+					"path": [
+						"api",
+						"identity",
+						"entitlement",
+						"decision",
+						"pdp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "XACML XML PDP",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/xml"
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46YWRtaW4="
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<Request xmlns=\"urn:oasis:names:tc:xacml:3.0:core:schema:wd-17\" CombinedDecision=\"false\" ReturnPolicyIdList=\"false\">\n    <Attributes Category=\"urn:oasis:names:tc:xacml:3.0:attribute-category:action\">\n        <Attribute AttributeId=\"urn:oasis:names:tc:xacml:1.0:action:action-id\" IncludeInResult=\"false\">\n            <AttributeValue DataType=\"http://www.w3.org/2001/XMLSchema#string\">read</AttributeValue>\n        </Attribute>\n    </Attributes>\n    <Attributes Category=\"urn:oasis:names:tc:xacml:3.0:attribute-category:resource\">\n        <Attribute AttributeId=\"urn:oasis:names:tc:xacml:1.0:resource:resource-id\" IncludeInResult=\"false\">\n            <AttributeValue DataType=\"http://www.w3.org/2001/XMLSchema#string\">http://127.0.0.1/service/very_secure/\n            </AttributeValue>\n        </Attribute>\n    </Attributes>\n</Request>"
+				},
+				"url": {
+					"raw": "https://localhost:9443/api/identity/entitlement/decision/pdp",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "9443",
+					"path": [
+						"api",
+						"identity",
+						"entitlement",
+						"decision",
+						"pdp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "XACML Rest Discovery Tenant",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW5AZm9vLmNvbTphZG1pbkBmb28uY29t"
+					},
+					{
+						"key": "Accept",
+						"value": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://localhost:9443/t/foo.com/api/identity/entitlement/decision/home",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "9443",
+					"path": [
+						"t",
+						"foo.com",
+						"api",
+						"identity",
+						"entitlement",
+						"decision",
+						"home"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

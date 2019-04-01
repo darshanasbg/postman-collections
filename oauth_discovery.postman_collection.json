@@ -1,0 +1,153 @@
+{
+	"info": {
+		"_postman_id": "7c3474b3-e53a-b76d-c377-f88eb4169d05",
+		"name": "OAuth Discovery",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Webfinger ST",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46YWRtaW4="
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://localhost:9443/.well-known/webfinger?resource=acct:admin@localhost&rel=http://openid.net/specs/connect/1.0/issuer",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "9443",
+					"path": [
+						".well-known",
+						"webfinger"
+					],
+					"query": [
+						{
+							"key": "resource",
+							"value": "acct:admin@localhost"
+						},
+						{
+							"key": "rel",
+							"value": "http://openid.net/specs/connect/1.0/issuer"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Discovery ST",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46YWRtaW4="
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://localhost:9443/oauth2/oidcdiscovery/.well-known/openid-configuration",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "9443",
+					"path": [
+						"oauth2",
+						"oidcdiscovery",
+						".well-known",
+						"openid-configuration"
+					]
+				},
+				"description": "Webfinger"
+			},
+			"response": []
+		},
+		{
+			"name": "Webfinger Tenant",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW5AZm9vLmNvbTphZG1pbkBmb28uY29t"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://localhost:9443/.well-known/webfinger?resource=acct:admin%40foo.com@localhost&rel=http://openid.net/specs/connect/1.0/issuer",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "9443",
+					"path": [
+						".well-known",
+						"webfinger"
+					],
+					"query": [
+						{
+							"key": "resource",
+							"value": "acct:admin%40foo.com@localhost"
+						},
+						{
+							"key": "rel",
+							"value": "http://openid.net/specs/connect/1.0/issuer"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Discovery ST copy",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW5AZm9vLmNvbTphZG1pbkBmb28uY29t"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://localhost:9443/t/foo.com/oauth2/oidcdiscovery/.well-known/openid-configuration",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "9443",
+					"path": [
+						"t",
+						"foo.com",
+						"oauth2",
+						"oidcdiscovery",
+						".well-known",
+						"openid-configuration"
+					]
+				},
+				"description": "Webfinger"
+			},
+			"response": []
+		}
+	]
+}
