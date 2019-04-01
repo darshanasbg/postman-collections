@@ -16,4 +16,5 @@ Contains Postman request templates related to,
 * Extract the downloaded zip
 * Open Postman.
 * Click on "Import Folder" option.
-* Select extracted folder.
+* Select extracted folder and click on Open.
+Now you have all the request complate collections imported to the postman.
