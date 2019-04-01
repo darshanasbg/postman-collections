@@ -12,7 +12,7 @@ Contains Postman request templates related to,
 
 ## Follow below instructions to import it to the postman
 
-* Download Postman request collection by downloading this repo or using the link https://github.com/darshanasbg/postman/archive/master.zip
+* Download Postman request collection by downloading this repo or using the link https://github.com/darshanasbg/postman-collections/archive/master.zip
 * Extract the downloaded zip
 * Open Postman.
 * Click on "Import Folder" option.
