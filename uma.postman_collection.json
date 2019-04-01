@@ -1,0 +1,360 @@
+{
+	"info": {
+		"_postman_id": "0bca2477-31f8-4e3e-956d-50b9fa38a205",
+		"name": "UMA",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1-PAT-Gen-Password-Grant",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "jVt_YCxceFqcT5RBLRh0hDH1VYga",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "NEUzi6MYb_1JbU1TwXYOZg4REgAa",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic aUVvUkZ0SFFNMUhMbjd0RVZlVkkwaE9VVTBvYTo4TlowUmNRZjRyY1E3ZXkyTTl6aVVGbzQ0UElh"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "lily",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "text"
+						},
+						{
+							"key": "scope",
+							"value": "uma_protection",
+							"type": "text"
+						},
+						{
+							"key": "profile",
+							"value": "abcdd",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:9443/oauth2/token",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "9443",
+					"path": [
+						"oauth2",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2-Reg-Resource",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "64658549-47c1-3b5a-8637-c629f16c4118",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"resource_scopes\": [\n    \"view\",\n    \"download\"\n  ],\n  \"description\": \"Collection of digital photographs\",\n  \"icon_uri\": \"http://www.example.com/icons/flower.png\",\n  \"name\": \"Photo Album 2\",\n  \"type\": \"http://www.example.com/rsrcs/photoalbum\"\n}"
+				},
+				"url": {
+					"raw": "https://localhost:9443/api/identity/oauth2/uma/resourceregistration/v1.0/resource",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "9443",
+					"path": [
+						"api",
+						"identity",
+						"oauth2",
+						"uma",
+						"resourceregistration",
+						"v1.0",
+						"resource"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3-PAT-Gen-PT",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "f7fca113-fb11-3d23-a81e-dad794167cac",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[{\"resource_id\":\"b8f71e76-9df3-4cba-af13-38f0b1f14831\",\"resource_scopes\":[\"view\"]}]"
+				},
+				"url": {
+					"raw": "https://localhost:9443/api/identity/oauth2/uma/permission/v1.0/permission",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "9443",
+					"path": [
+						"api",
+						"identity",
+						"oauth2",
+						"uma",
+						"permission",
+						"v1.0",
+						"permission"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "z-Get-Resource",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "f7fca113-fb11-3d23-a81e-dad794167cac",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://localhost:9443/api/identity/oauth2/uma/resourceregistration/v1.0/resource/ceaa6506-1da9-456b-88d8-027797d2e081",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "9443",
+					"path": [
+						"api",
+						"identity",
+						"oauth2",
+						"uma",
+						"resourceregistration",
+						"v1.0",
+						"resource",
+						"ceaa6506-1da9-456b-88d8-027797d2e081"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "z-Delete-Resource",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "cd836906-4755-3391-a579-6cf41d51dc1a",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://localhost:9443/api/identity/oauth2/uma/resourceregistration/v1.0/resource/f8c81e8a-7b87-4b85-a552-89d688ba48a5",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "9443",
+					"path": [
+						"api",
+						"identity",
+						"oauth2",
+						"uma",
+						"resourceregistration",
+						"v1.0",
+						"resource",
+						"f8c81e8a-7b87-4b85-a552-89d688ba48a5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "z-List-Resources",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "f7fca113-fb11-3d23-a81e-dad794167cac",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://localhost:9443/api/identity/oauth2/uma/resourceregistration/v1.0/resource",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "9443",
+					"path": [
+						"api",
+						"identity",
+						"oauth2",
+						"uma",
+						"resourceregistration",
+						"v1.0",
+						"resource"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "z-Put-Resource",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "cd836906-4755-3391-a579-6cf41d51dc1a",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"resource_scopes\": [\n        \"view\"\n    ],\n    \"name\": \"Photo Album 2\",\n    \"type\": \"http://www.example.com/rsrcs/photoalbum\",\n    \"icon_uri\": \"http://www.example.com/icons/flower.png\",\n    \"description\": \"Collection of digital photographs\",\n    \"_id\": \"ceaa6506-1da9-456b-88d8-027797d2e081\"\n}"
+				},
+				"url": {
+					"raw": "https://localhost:9443/api/identity/oauth2/uma/resourceregistration/v1.0/resource/f8c81e8a-7b87-4b85-a552-89d688ba48a5",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "9443",
+					"path": [
+						"api",
+						"identity",
+						"oauth2",
+						"uma",
+						"resourceregistration",
+						"v1.0",
+						"resource",
+						"f8c81e8a-7b87-4b85-a552-89d688ba48a5"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
