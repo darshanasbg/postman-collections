@@ -6,8 +6,110 @@
 	},
 	"item": [
 		{
-			"name": "Password Grant Type",
+			"name": "Authz Code",
 			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://localhost:9443/oauth2/authorize?rDOYAzkLEgsGDxeyioGuJDFSjWYascope=openid&response_type=code&redirect_uri=http://google.com&client_id=rDOYAzkLEgsGDxeyioGuJDFSjWYa",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "9443",
+					"path": [
+						"oauth2",
+						"authorize"
+					],
+					"query": [
+						{
+							"key": "rDOYAzkLEgsGDxeyioGuJDFSjWYascope",
+							"value": "openid"
+						},
+						{
+							"key": "response_type",
+							"value": "code"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "http://google.com"
+						},
+						{
+							"key": "client_id",
+							"value": "rDOYAzkLEgsGDxeyioGuJDFSjWYa"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Authorization Code Grant",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic NFZxTmw1c0JpUGc5OGpDVUFlSm1OOUlLQ3NJYTpuZTR3QU1DSkhVVjFjVmR0YXgzQ3J6VmY5UUVh"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "authorization_code",
+							"type": "text"
+						},
+						{
+							"key": "code",
+							"value": "8eea63b4-206d-3e22-9841-5b4721163ac7",
+							"type": "text"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "http://google.com",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:9443/oauth2/token",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "9443",
+					"path": [
+						"oauth2",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Password Grant",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "Vyc3_gLZi3tHP_kGb6ksgMtM4JIa",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "USER_PORTAL",
+							"type": "string"
+						}
+					]
+				},
 				"method": "POST",
 				"header": [
 					{
@@ -66,56 +168,6 @@
 			"response": []
 		},
 		{
-			"name": "Refresh Grant Type",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Basic dE1faFhKWkxHWDRPT2FmZmQ3ZXNzZGhZc2xnYTpzOEZEOHFfWE9VZG40aTRKWGFqMmNXSHpmSElh"
-					}
-				],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "grant_type",
-							"value": "refresh_token",
-							"type": "text"
-						},
-						{
-							"key": "refresh_token",
-							"value": "90e5372f-e5e8-32ca-b96f-6e2dd539b72c",
-							"type": "text"
-						},
-						{
-							"key": "scope",
-							"value": "openid sgc",
-							"type": "text"
-						},
-						{
-							"key": "Authorization",
-							"value": "Basic dE1faFhKWkxHWDRPT2FmZmQ3ZXNzZGhZc2xnYTpzOEZEOHFfWE9VZG40aTRKWGFqMmNXSHpmSElh",
-							"type": "text"
-						}
-					]
-				},
-				"url": {
-					"raw": "https://localhost:9443/oauth2/token",
-					"protocol": "https",
-					"host": [
-						"localhost"
-					],
-					"port": "9443",
-					"path": [
-						"oauth2",
-						"token"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "Client Credentials Grant",
 			"request": {
 				"method": "POST",
@@ -151,162 +203,7 @@
 			"response": []
 		},
 		{
-			"name": "Token Revocation",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Basic UWlwTlQyS1g0R3FwZENxUENLS1lRQmZ5RmU0YTpyWTEySnZlSjVlYTBKSnVfSURnRUpoUHdnYlVh"
-					}
-				],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "token_type_hint",
-							"value": "access_token",
-							"type": "text"
-						},
-						{
-							"key": "token",
-							"value": "667f5a97-e8f6-37da-9993-f1461a52015a",
-							"type": "text"
-						}
-					]
-				},
-				"url": {
-					"raw": "https://localhost:9443/oauth2/revoke",
-					"protocol": "https",
-					"host": [
-						"localhost"
-					],
-					"port": "9443",
-					"path": [
-						"oauth2",
-						"revoke"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "authorization code grant",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Basic NFZxTmw1c0JpUGc5OGpDVUFlSm1OOUlLQ3NJYTpuZTR3QU1DSkhVVjFjVmR0YXgzQ3J6VmY5UUVh"
-					}
-				],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "grant_type",
-							"value": "authorization_code",
-							"type": "text"
-						},
-						{
-							"key": "code",
-							"value": "987ad2aa-1b77-3b84-afd8-a85a309ff906",
-							"type": "text"
-						},
-						{
-							"key": "redirect_uri",
-							"value": "http://localhost:8080/playground2/oauth2client",
-							"type": "text"
-						}
-					]
-				},
-				"url": {
-					"raw": "https://localhost:9443/oauth2/token",
-					"protocol": "https",
-					"host": [
-						"localhost"
-					],
-					"port": "9443",
-					"path": [
-						"oauth2",
-						"token"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "custom grant",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Basic R3FyR3lVbVM4bGY3TGRhR0RmYUIyVjc0S2hNYTpENU5sREdjbWdLWVE3Wks1TENWR1BqazRlSHdh"
-					}
-				],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "grant_type",
-							"value": "client_credentials",
-							"type": "text"
-						}
-					]
-				},
-				"url": {
-					"raw": "https://localhost:9443/oauth2/token",
-					"protocol": "https",
-					"host": [
-						"localhost"
-					],
-					"port": "9443",
-					"path": [
-						"oauth2",
-						"token"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "userinfo",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer da096cdf-c137-3561-801d-ce10f1172256"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"url": {
-					"raw": "https://localhost:9443/oauth2/userinfo?schema=openid",
-					"protocol": "https",
-					"host": [
-						"localhost"
-					],
-					"port": "9443",
-					"path": [
-						"oauth2",
-						"userinfo"
-					],
-					"query": [
-						{
-							"key": "schema",
-							"value": "openid"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "SAML",
+			"name": "SAML Bearer Grant",
 			"request": {
 				"auth": {
 					"type": "basic",
@@ -366,7 +263,7 @@
 			"response": []
 		},
 		{
-			"name": "JWT",
+			"name": "JWT Grant",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -410,7 +307,141 @@
 			"response": []
 		},
 		{
-			"name": "OAuth_Introspec",
+			"name": "Account Switch Grant",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "2830c311-d4ba-3a07-b0eb-11c83120c34f",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"warning": "This is a duplicate header and will be overridden by the Authorization header generated by Postman.",
+						"key": "Authorization",
+						"value": "Basic aUVvUkZ0SFFNMUhMbjd0RVZlVkkwaE9VVTBvYTo4TlowUmNRZjRyY1E3ZXkyTTl6aVVGbzQ0UElh",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "account_switch",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "darshana",
+							"type": "text"
+						},
+						{
+							"key": "userstore-domain",
+							"value": "PRIMARY",
+							"type": "text"
+						},
+						{
+							"key": "tenant-domain",
+							"value": "carbon.super",
+							"type": "text"
+						},
+						{
+							"key": "token",
+							"value": "f7fdc28d-06c3-3f5a-8711-34ea4afbd365",
+							"type": "text"
+						},
+						{
+							"key": "scope",
+							"value": "openid fff",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "USER_PORTAL",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:9443/oauth2/token",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "9443",
+					"path": [
+						"oauth2",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Refresh Grant",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic dE1faFhKWkxHWDRPT2FmZmQ3ZXNzZGhZc2xnYTpzOEZEOHFfWE9VZG40aTRKWGFqMmNXSHpmSElh",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "refresh_token",
+							"type": "text"
+						},
+						{
+							"key": "refresh_token",
+							"value": "521ab5fa-8312-33b0-a7ed-7768440a9aa2",
+							"type": "text"
+						},
+						{
+							"key": "scope",
+							"value": "openid",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "USER_PORTAL",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:9443/oauth2/token",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "9443",
+					"path": [
+						"oauth2",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Introspect",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -450,7 +481,191 @@
 			"response": []
 		},
 		{
-			"name": "Password Grant Type Tenant",
+			"name": "Token Revocation",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic UWlwTlQyS1g0R3FwZENxUENLS1lRQmZ5RmU0YTpyWTEySnZlSjVlYTBKSnVfSURnRUpoUHdnYlVh"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "token_type_hint",
+							"value": "access_token",
+							"type": "text"
+						},
+						{
+							"key": "token",
+							"value": "667f5a97-e8f6-37da-9993-f1461a52015a",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:9443/oauth2/revoke",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "9443",
+					"path": [
+						"oauth2",
+						"revoke"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User-Info",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer da096cdf-c137-3561-801d-ce10f1172256"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://localhost:9443/oauth2/userinfo?schema=openid",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "9443",
+					"path": [
+						"oauth2",
+						"userinfo"
+					],
+					"query": [
+						{
+							"key": "schema",
+							"value": "openid"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Custom Mobile Grant",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "x_oIwAUI476de9K_JCa44C0xHBga",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "jGg4u46_RqArqiCQr2UzWTdhaica",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"warning": "This is a duplicate header and will be overridden by the Authorization header generated by Postman.",
+						"key": "Authorization",
+						"value": "Basic ckRPWUF6a0xFZ3NHRHhleWlvR3VKREZTaldZYTpEczVJSUJlM0N0RFZHQmZ4NkpOOVRhNW5iamth"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "mobile",
+							"type": "text"
+						},
+						{
+							"key": "mobileNumber",
+							"value": "0333444",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "scope",
+							"value": "openid sss aa",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:9443/oauth2/token",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "9443",
+					"path": [
+						"oauth2",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Custom Grant",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic R3FyR3lVbVM4bGY3TGRhR0RmYUIyVjc0S2hNYTpENU5sREdjbWdLWVE3Wks1TENWR1BqazRlSHdh"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:9443/oauth2/token",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "9443",
+					"path": [
+						"oauth2",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Password Grant Tenant",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -505,7 +720,7 @@
 			"response": []
 		},
 		{
-			"name": "OAuth_Introspec_Tenant",
+			"name": "Introspect Tenant",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -547,7 +762,7 @@
 			"response": []
 		},
 		{
-			"name": "authorization code Tenant",
+			"name": "Authorization Code Grant Tenant",
 			"request": {
 				"method": "POST",
 				"header": [
