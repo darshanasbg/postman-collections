@@ -1,24 +1,111 @@
 {
 	"info": {
-		"_postman_id": "0bca2477-31f8-4e3e-956d-50b9fa38a205",
-		"name": "UMA",
+		"_postman_id": "a91bee42-ff84-2e99-6fcb-8cb7866e71ec",
+		"name": "OAuth",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "1-PAT-Gen-Password-Grant",
+			"name": "Authz Code",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://localhost:9443/oauth2/authorize?rDOYAzkLEgsGDxeyioGuJDFSjWYascope=openid&response_type=code&redirect_uri=http://google.com&client_id=rDOYAzkLEgsGDxeyioGuJDFSjWYa",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "9443",
+					"path": [
+						"oauth2",
+						"authorize"
+					],
+					"query": [
+						{
+							"key": "rDOYAzkLEgsGDxeyioGuJDFSjWYascope",
+							"value": "openid"
+						},
+						{
+							"key": "response_type",
+							"value": "code"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "http://google.com"
+						},
+						{
+							"key": "client_id",
+							"value": "rDOYAzkLEgsGDxeyioGuJDFSjWYa"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Authorization Code Grant",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic NFZxTmw1c0JpUGc5OGpDVUFlSm1OOUlLQ3NJYTpuZTR3QU1DSkhVVjFjVmR0YXgzQ3J6VmY5UUVh"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "authorization_code",
+							"type": "text"
+						},
+						{
+							"key": "code",
+							"value": "8eea63b4-206d-3e22-9841-5b4721163ac7",
+							"type": "text"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "http://google.com",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:9443/oauth2/token",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "9443",
+					"path": [
+						"oauth2",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Password Grant",
 			"request": {
 				"auth": {
 					"type": "basic",
 					"basic": [
 						{
 							"key": "password",
-							"value": "jVt_YCxceFqcT5RBLRh0hDH1VYga",
+							"value": "Vyc3_gLZi3tHP_kGb6ksgMtM4JIa",
 							"type": "string"
 						},
 						{
 							"key": "username",
-							"value": "NEUzi6MYb_1JbU1TwXYOZg4REgAa",
+							"value": "USER_PORTAL",
 							"type": "string"
 						}
 					]
@@ -44,7 +131,7 @@
 						},
 						{
 							"key": "username",
-							"value": "lily",
+							"value": "admin",
 							"type": "text"
 						},
 						{
@@ -54,7 +141,7 @@
 						},
 						{
 							"key": "scope",
-							"value": "uma_protection",
+							"value": "openid sgc",
 							"type": "text"
 						},
 						{
@@ -81,14 +168,54 @@
 			"response": []
 		},
 		{
-			"name": "2-Reg-Resource",
+			"name": "Client Credentials Grant",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic M3ZMcXhsQWgwcjBqNFdkM2Rkbm9taWV6Y2ljYTo4Y2NVdjdUa0E1WWE4SUp1TGFyUlRJYWo1d2th"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:9443/oauth2/token",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "9443",
+					"path": [
+						"oauth2",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SAML Bearer Grant",
 			"request": {
 				"auth": {
-					"type": "bearer",
-					"bearer": [
+					"type": "basic",
+					"basic": [
 						{
-							"key": "token",
-							"value": "64658549-47c1-3b5a-8637-c629f16c4118",
+							"key": "password",
+							"value": "cCqzw_5ThSkh3cL4_HG6gdAsTl0a",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "AWYUCqtAIHSgnzUCMwLMNFaHR_Ma",
 							"type": "string"
 						}
 					]
@@ -97,43 +224,97 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
+						"value": "application/x-www-form-urlencoded"
 					}
 				],
 				"body": {
-					"mode": "raw",
-					"raw": "{\n  \"resource_scopes\": [\n    \"view\",\n    \"download\"\n  ],\n  \"description\": \"Collection of digital photographs\",\n  \"icon_uri\": \"http://www.example.com/icons/flower.png\",\n  \"name\": \"Photo Album 2\",\n  \"type\": \"http://www.example.com/rsrcs/photoalbum\"\n}"
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "urn:ietf:params:oauth:grant-type:saml2-bearer",
+							"type": "text"
+						},
+						{
+							"key": "assertion",
+							"value": "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c2FtbDpBc3NlcnRpb24geG1sbnM6c2FtbD0idXJuOm9hc2lzOm5hbWVzOnRjOlNBTUw6Mi4wOmFzc2VydGlvbiIgSUQ9InBsb2RnbWlramxiamtoa2NjcG9pb2plb2pkanBhZG5iaGNqanBma2ciIElzc3VlSW5zdGFudD0iMjAxOC0wOC0yMlQxMTo1NToxMy43NDZaIiBWZXJzaW9uPSIyLjAiPjxzYW1sOklzc3VlciBGb3JtYXQ9InVybjpvYXNpczpuYW1lczp0YzpTQU1MOjIuMDpuYW1laWQtZm9ybWF0OmVudGl0eSI-aGVsbG93b3JsZDwvc2FtbDpJc3N1ZXI-PGRzOlNpZ25hdHVyZSB4bWxuczpkcz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC8wOS94bWxkc2lnIyI-CjxkczpTaWduZWRJbmZvPgo8ZHM6Q2Fub25pY2FsaXphdGlvbk1ldGhvZCBBbGdvcml0aG09Imh0dHA6Ly93d3cudzMub3JnLzIwMDEvMTAveG1sLWV4Yy1jMTRuIyIvPgo8ZHM6U2lnbmF0dXJlTWV0aG9kIEFsZ29yaXRobT0iaHR0cDovL3d3dy53My5vcmcvMjAwMC8wOS94bWxkc2lnI3JzYS1zaGExIi8-CjxkczpSZWZlcmVuY2UgVVJJPSIjcGxvZGdtaWtqbGJqa2hrY2Nwb2lvamVvamRqcGFkbmJoY2pqcGZrZyI-CjxkczpUcmFuc2Zvcm1zPgo8ZHM6VHJhbnNmb3JtIEFsZ29yaXRobT0iaHR0cDovL3d3dy53My5vcmcvMjAwMC8wOS94bWxkc2lnI2VudmVsb3BlZC1zaWduYXR1cmUiLz4KPGRzOlRyYW5zZm9ybSBBbGdvcml0aG09Imh0dHA6Ly93d3cudzMub3JnLzIwMDEvMTAveG1sLWV4Yy1jMTRuIyI-PGVjOkluY2x1c2l2ZU5hbWVzcGFjZXMgeG1sbnM6ZWM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDEvMTAveG1sLWV4Yy1jMTRuIyIgUHJlZml4TGlzdD0iZHMgc2FtbCB4cyB4c2kiLz48L2RzOlRyYW5zZm9ybT4KPC9kczpUcmFuc2Zvcm1zPgo8ZHM6RGlnZXN0TWV0aG9kIEFsZ29yaXRobT0iaHR0cDovL3d3dy53My5vcmcvMjAwMC8wOS94bWxkc2lnI3NoYTEiLz4KPGRzOkRpZ2VzdFZhbHVlPjdPSXRnNkVCeDFPN052M2U5c0NEMGR3a01JND08L2RzOkRpZ2VzdFZhbHVlPgo8L2RzOlJlZmVyZW5jZT4KPC9kczpTaWduZWRJbmZvPgo8ZHM6U2lnbmF0dXJlVmFsdWU-CmIzckRoelptZmFsU2FzMUZhL1pPQWh0SlhMQSt2TUtmNkQ2VkJSOG1IN0FZWCt4SE0rT1pmcjVITlJReDNGSXVYQ2RhbDA5dFJ2a1IKVlgyaFhUL2FMeUFVQjNxbnhFV0JoeWJqdlJxNkloWFVqZTBxZStVWGhyZVVxcmwvOERweFRUY21DMXcxTE9kTHh6L29iOGl4RmtBcAorZVhJSzJhYmhLRVc0SW4vcVkwPQo8L2RzOlNpZ25hdHVyZVZhbHVlPgo8ZHM6S2V5SW5mbz48ZHM6WDUwOURhdGE-PGRzOlg1MDlDZXJ0aWZpY2F0ZT5NSUlDTlRDQ0FaNmdBd0lCQWdJRVMzNDNnakFOQmdrcWhraUc5dzBCQVFVRkFEQlZNUXN3Q1FZRFZRUUdFd0pWVXpFTE1Ba0dBMVVFCkNBd0NRMEV4RmpBVUJnTlZCQWNNRFUxdmRXNTBZV2x1SUZacFpYY3hEVEFMQmdOVkJBb01CRmRUVHpJeEVqQVFCZ05WQkFNTUNXeHYKWTJGc2FHOXpkREFlRncweE1EQXlNVGt3TnpBeU1qWmFGdzB6TlRBeU1UTXdOekF5TWpaYU1GVXhDekFKQmdOVkJBWVRBbFZUTVFzdwpDUVlEVlFRSURBSkRRVEVXTUJRR0ExVUVCd3dOVFc5MWJuUmhhVzRnVm1sbGR6RU5NQXNHQTFVRUNnd0VWMU5QTWpFU01CQUdBMVVFCkF3d0piRzlqWVd4b2IzTjBNSUdmTUEwR0NTcUdTSWIzRFFFQkFRVUFBNEdOQURDQmlRS0JnUUNVcC9vVjF2V2M4L1RrUVNpQXZUb3UKc016T000YXNCMmlsdHIyUUtvem5pNWFWRnU4MThNcE9MWklyOExNblR6V2xsSnZ2YUE1UkFBZHBiRUNiKzQ4RmpiQmUwaHNlVWRONQpIcHd2bkgvRFc4WmNjR3ZrNTNJNk9ycTdoTEN2MVpIdHVPQ29rZ2h6L0FUcmh5UHErUWt0TWZYblJTNEhyS0dKVHp4YUNjVTdPUUlECkFRQUJveEl3RURBT0JnTlZIUThCQWY4RUJBTUNCUEF3RFFZSktvWklodmNOQVFFRkJRQURnWUVBVzV3UFI3Y3IxTEFkcStJclI0NGkKUWxSRzVJVENaWFk5aEkwUHlnTFAyckhBTmgrUFlmVG14YnVPbnlrTkd5aE02RmpGTGJXMnVaSFFUWTFqTXJQcHJqT3JteUs1c2pKUgpPNGQxRGVHSFQvWW5JanM5Sm9nUkt2NFhIRUN3THRJVmRBYklkV0hFdFZaSnlNU2t0Y3l5c0ZjdnVoUFFLOFFjL0UvV3E4dUhTQ289PC9kczpYNTA5Q2VydGlmaWNhdGU-PC9kczpYNTA5RGF0YT48L2RzOktleUluZm8-PC9kczpTaWduYXR1cmU-PHNhbWw6U3ViamVjdD48c2FtbDpOYW1lSUQgRm9ybWF0PSJ1cm46b2FzaXM6bmFtZXM6dGM6U0FNTDoxLjE6bmFtZWlkLWZvcm1hdDplbWFpbEFkZHJlc3MiPmFkbWluPC9zYW1sOk5hbWVJRD48c2FtbDpTdWJqZWN0Q29uZmlybWF0aW9uIE1ldGhvZD0idXJuOm9hc2lzOm5hbWVzOnRjOlNBTUw6Mi4wOmNtOmJlYXJlciI-PHNhbWw6U3ViamVjdENvbmZpcm1hdGlvbkRhdGEgSW5SZXNwb25zZVRvPSIwIiBOb3RPbk9yQWZ0ZXI9IjIwMTgtMDgtMjJUMTI6MDA6MTMuNzQ2WiIgUmVjaXBpZW50PSJodHRwczovL2xvY2FsaG9zdDo5NDQzL29hdXRoMi90b2tlbiIvPjwvc2FtbDpTdWJqZWN0Q29uZmlybWF0aW9uPjwvc2FtbDpTdWJqZWN0PjxzYW1sOkNvbmRpdGlvbnMgTm90QmVmb3JlPSIyMDE4LTA4LTIyVDExOjU1OjEzLjc0NloiIE5vdE9uT3JBZnRlcj0iMjAxOC0wOC0yMlQxMjowMDoxMy43NDZaIj48c2FtbDpBdWRpZW5jZVJlc3RyaWN0aW9uPjxzYW1sOkF1ZGllbmNlPmh0dHBzOi8vbG9jYWxob3N0Ojk0NDMvb2F1dGgyL3Rva2VuPC9zYW1sOkF1ZGllbmNlPjwvc2FtbDpBdWRpZW5jZVJlc3RyaWN0aW9uPjwvc2FtbDpDb25kaXRpb25zPjxzYW1sOkF1dGhuU3RhdGVtZW50IEF1dGhuSW5zdGFudD0iMjAxOC0wOC0yMlQxMTo1NToxMy44MTFaIj48c2FtbDpBdXRobkNvbnRleHQ-PHNhbWw6QXV0aG5Db250ZXh0Q2xhc3NSZWY-dXJuOm9hc2lzOm5hbWVzOnRjOlNBTUw6Mi4wOmFjOmNsYXNzZXM6UGFzc3dvcmQ8L3NhbWw6QXV0aG5Db250ZXh0Q2xhc3NSZWY-PC9zYW1sOkF1dGhuQ29udGV4dD48L3NhbWw6QXV0aG5TdGF0ZW1lbnQ-PHNhbWw6QXR0cmlidXRlU3RhdGVtZW50PjxzYW1sOkF0dHJpYnV0ZT48c2FtbDpBdHRyaWJ1dGVWYWx1ZSB4bWxuczp4cz0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEiIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiIHhzaTp0eXBlPSJ4czpzdHJpbmciPi88L3NhbWw6QXR0cmlidXRlVmFsdWU-PC9zYW1sOkF0dHJpYnV0ZT48L3NhbWw6QXR0cmlidXRlU3RhdGVtZW50Pjwvc2FtbDpBc3NlcnRpb24-",
+							"type": "text"
+						},
+						{
+							"key": "scope",
+							"value": "openid",
+							"type": "text"
+						}
+					]
 				},
 				"url": {
-					"raw": "https://localhost:9443/api/identity/oauth2/uma/resourceregistration/v1.0/resource",
+					"raw": "https://localhost:9443/oauth2/token",
 					"protocol": "https",
 					"host": [
 						"localhost"
 					],
 					"port": "9443",
 					"path": [
-						"api",
-						"identity",
 						"oauth2",
-						"uma",
-						"resourceregistration",
-						"v1.0",
-						"resource"
+						"token"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "3-PAT-Gen-PT",
+			"name": "JWT Grant",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic NGpjRWdrc3Z1WVVPX3JJQU5UeWJQbnI4R05vYTo0amNFZ2tzdnVZVU9fcklBTlR5YlBucjhHTm9h"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "urn:ietf:params:oauth:grant-type:jwt-bearer",
+							"type": "text"
+						},
+						{
+							"key": "assertion",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:9443/oauth2/token",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "9443",
+					"path": [
+						"oauth2",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Account Switch Grant",
 			"request": {
 				"auth": {
 					"type": "bearer",
 					"bearer": [
 						{
 							"key": "token",
-							"value": "f7fca113-fb11-3d23-a81e-dad794167cac",
+							"value": "2830c311-d4ba-3a07-b0eb-11c83120c34f",
 							"type": "string"
 						}
 					]
@@ -141,149 +322,212 @@
 				"method": "POST",
 				"header": [
 					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "[{\"resource_id\":\"b8f71e76-9df3-4cba-af13-38f0b1f14831\",\"resource_scopes\":[\"view\"]}]"
-				},
-				"url": {
-					"raw": "https://localhost:9443/api/identity/oauth2/uma/permission/v1.0/permission",
-					"protocol": "https",
-					"host": [
-						"localhost"
-					],
-					"port": "9443",
-					"path": [
-						"api",
-						"identity",
-						"oauth2",
-						"uma",
-						"permission",
-						"v1.0",
-						"permission"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "z-Get-Resource",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "f7fca113-fb11-3d23-a81e-dad794167cac",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [
+						"warning": "This is a duplicate header and will be overridden by the Authorization header generated by Postman.",
+						"key": "Authorization",
+						"value": "Basic aUVvUkZ0SFFNMUhMbjd0RVZlVkkwaE9VVTBvYTo4TlowUmNRZjRyY1E3ZXkyTTl6aVVGbzQ0UElh",
+						"disabled": true
+					},
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text",
+						"value": "application/x-www-form-urlencoded",
 						"disabled": true
 					}
 				],
 				"body": {
-					"mode": "raw",
-					"raw": ""
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "account_switch",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "darshana",
+							"type": "text"
+						},
+						{
+							"key": "userstore-domain",
+							"value": "PRIMARY",
+							"type": "text"
+						},
+						{
+							"key": "tenant-domain",
+							"value": "carbon.super",
+							"type": "text"
+						},
+						{
+							"key": "token",
+							"value": "f7fdc28d-06c3-3f5a-8711-34ea4afbd365",
+							"type": "text"
+						},
+						{
+							"key": "scope",
+							"value": "openid fff",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "USER_PORTAL",
+							"type": "text"
+						}
+					]
 				},
 				"url": {
-					"raw": "https://localhost:9443/api/identity/oauth2/uma/resourceregistration/v1.0/resource/ceaa6506-1da9-456b-88d8-027797d2e081",
+					"raw": "https://localhost:9443/oauth2/token",
 					"protocol": "https",
 					"host": [
 						"localhost"
 					],
 					"port": "9443",
 					"path": [
-						"api",
-						"identity",
 						"oauth2",
-						"uma",
-						"resourceregistration",
-						"v1.0",
-						"resource",
-						"ceaa6506-1da9-456b-88d8-027797d2e081"
+						"token"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "z-Delete-Resource",
+			"name": "Refresh Grant",
 			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "cd836906-4755-3391-a579-6cf41d51dc1a",
-							"type": "string"
-						}
-					]
-				},
-				"method": "DELETE",
+				"method": "POST",
 				"header": [
 					{
-						"key": "Content-Type",
-						"type": "text",
-						"value": "application/json",
+						"key": "Authorization",
+						"value": "Basic dE1faFhKWkxHWDRPT2FmZmQ3ZXNzZGhZc2xnYTpzOEZEOHFfWE9VZG40aTRKWGFqMmNXSHpmSElh",
 						"disabled": true
 					}
 				],
 				"body": {
-					"mode": "raw",
-					"raw": ""
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "refresh_token",
+							"type": "text"
+						},
+						{
+							"key": "refresh_token",
+							"value": "521ab5fa-8312-33b0-a7ed-7768440a9aa2",
+							"type": "text"
+						},
+						{
+							"key": "scope",
+							"value": "openid",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "USER_PORTAL",
+							"type": "text",
+							"disabled": true
+						}
+					]
 				},
 				"url": {
-					"raw": "https://localhost:9443/api/identity/oauth2/uma/resourceregistration/v1.0/resource/f8c81e8a-7b87-4b85-a552-89d688ba48a5",
+					"raw": "https://localhost:9443/oauth2/token",
 					"protocol": "https",
 					"host": [
 						"localhost"
 					],
 					"port": "9443",
 					"path": [
-						"api",
-						"identity",
 						"oauth2",
-						"uma",
-						"resourceregistration",
-						"v1.0",
-						"resource",
-						"f8c81e8a-7b87-4b85-a552-89d688ba48a5"
+						"token"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "z-List-Resources",
+			"name": "Introspect",
 			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46YWRtaW4="
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
 						{
 							"key": "token",
-							"value": "f7fca113-fb11-3d23-a81e-dad794167cac",
-							"type": "string"
+							"value": "25105236-a0bb-3f32-acf0-969d4ac6efa1",
+							"type": "text"
 						}
 					]
 				},
+				"url": {
+					"raw": "https://localhost:9443/oauth2/introspect",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "9443",
+					"path": [
+						"oauth2",
+						"introspect"
+					]
+				},
+				"description": "OAuth token validation"
+			},
+			"response": []
+		},
+		{
+			"name": "Token Revocation",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic UWlwTlQyS1g0R3FwZENxUENLS1lRQmZ5RmU0YTpyWTEySnZlSjVlYTBKSnVfSURnRUpoUHdnYlVh"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "token_type_hint",
+							"value": "access_token",
+							"type": "text"
+						},
+						{
+							"key": "token",
+							"value": "667f5a97-e8f6-37da-9993-f1461a52015a",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:9443/oauth2/revoke",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "9443",
+					"path": [
+						"oauth2",
+						"revoke"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User-Info",
+			"request": {
 				"method": "GET",
 				"header": [
 					{
-						"key": "Content-Type",
-						"type": "text",
-						"value": "application/json"
+						"key": "Authorization",
+						"value": "Bearer da096cdf-c137-3561-801d-ce10f1172256"
 					}
 				],
 				"body": {
@@ -291,66 +535,272 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "https://localhost:9443/api/identity/oauth2/uma/resourceregistration/v1.0/resource",
+					"raw": "https://localhost:9443/oauth2/userinfo?schema=openid",
 					"protocol": "https",
 					"host": [
 						"localhost"
 					],
 					"port": "9443",
 					"path": [
-						"api",
-						"identity",
 						"oauth2",
-						"uma",
-						"resourceregistration",
-						"v1.0",
-						"resource"
+						"userinfo"
+					],
+					"query": [
+						{
+							"key": "schema",
+							"value": "openid"
+						}
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "z-Put-Resource",
+			"name": "Custom Mobile Grant",
 			"request": {
 				"auth": {
-					"type": "bearer",
-					"bearer": [
+					"type": "basic",
+					"basic": [
 						{
-							"key": "token",
-							"value": "cd836906-4755-3391-a579-6cf41d51dc1a",
+							"key": "password",
+							"value": "x_oIwAUI476de9K_JCa44C0xHBga",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "jGg4u46_RqArqiCQr2UzWTdhaica",
 							"type": "string"
 						}
 					]
 				},
-				"method": "PUT",
+				"method": "POST",
 				"header": [
 					{
-						"key": "Content-Type",
-						"type": "text",
-						"value": "application/json"
+						"warning": "This is a duplicate header and will be overridden by the Authorization header generated by Postman.",
+						"key": "Authorization",
+						"value": "Basic ckRPWUF6a0xFZ3NHRHhleWlvR3VKREZTaldZYTpEczVJSUJlM0N0RFZHQmZ4NkpOOVRhNW5iamth"
 					}
 				],
 				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"resource_scopes\": [\n        \"view\"\n    ],\n    \"name\": \"Photo Album 2\",\n    \"type\": \"http://www.example.com/rsrcs/photoalbum\",\n    \"icon_uri\": \"http://www.example.com/icons/flower.png\",\n    \"description\": \"Collection of digital photographs\",\n    \"_id\": \"ceaa6506-1da9-456b-88d8-027797d2e081\"\n}"
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "mobile",
+							"type": "text"
+						},
+						{
+							"key": "mobileNumber",
+							"value": "0333444",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "scope",
+							"value": "openid sss aa",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
 				},
 				"url": {
-					"raw": "https://localhost:9443/api/identity/oauth2/uma/resourceregistration/v1.0/resource/f8c81e8a-7b87-4b85-a552-89d688ba48a5",
+					"raw": "https://localhost:9443/oauth2/token",
 					"protocol": "https",
 					"host": [
 						"localhost"
 					],
 					"port": "9443",
 					"path": [
-						"api",
-						"identity",
 						"oauth2",
-						"uma",
-						"resourceregistration",
-						"v1.0",
-						"resource",
-						"f8c81e8a-7b87-4b85-a552-89d688ba48a5"
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Custom Grant",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic R3FyR3lVbVM4bGY3TGRhR0RmYUIyVjc0S2hNYTpENU5sREdjbWdLWVE3Wks1TENWR1BqazRlSHdh"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:9443/oauth2/token",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "9443",
+					"path": [
+						"oauth2",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Password Grant Tenant",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic S2RjVmpiT09HbEhrNzFiOWdib2lwSnVRWTEwYTp6ME1sUkI2UmxrWnRrUzBVUlJxNmR3MTl2NmNh"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "text"
+						},
+						{
+							"key": "scope",
+							"value": "openid sss",
+							"type": "text"
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:9443/oauth2/token",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "9443",
+					"path": [
+						"oauth2",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Introspect Tenant",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW5AZm9vLmNvbTphZG1pbkBmb28uY29t"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "token",
+							"value": "c2f75cfb-7662-3601-87ca-9d6cbfcb6f97",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:9443/t/foo.com/oauth2/introspect",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "9443",
+					"path": [
+						"t",
+						"foo.com",
+						"oauth2",
+						"introspect"
+					]
+				},
+				"description": "OAuth token validation for tenant foo.com"
+			},
+			"response": []
+		},
+		{
+			"name": "Authorization Code Grant Tenant",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic aWhqZWFxbW9fZTdOd0hjcDhzcU1LbmU0dGVzYTp6ejAycFA1SjBYUjhqcWdyNG9RRUtOeDNpX1lh"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "authorization_code",
+							"type": "text"
+						},
+						{
+							"key": "code",
+							"value": "e927a547-c649-3353-906c-50b8aec06c3f",
+							"type": "text"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "http://localhost:8080/playground2/oauth2client",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:9443/oauth2/token",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "9443",
+					"path": [
+						"oauth2",
+						"token"
 					]
 				}
 			},
